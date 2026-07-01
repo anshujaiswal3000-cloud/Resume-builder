@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Landing Page View -->
+  <div id="landingView">
+    <nav class="navbar">
+      <h2>Resume Builder</h2>
+      <div class="nav-actions">
+        <button class="signinBtn" id="navSignIn">Sign In</button>
+        <button class="signupBtn" id="navSignUp">Sign Up</button>
+      </div>
+    </nav>
+
+    <section class="section hero">
+      <div class="heroLeft">
+        <h1><span>Resume/Portfolio</span> Builder</h1>
+        <p>Modern templates, live preview, and instant PDF download.</p>
+        <div class="btnGroup">
+          <button class="primaryBtn" id="heroBrowse">Browse Templates</button>
+          <button class="secondaryBtn" id="heroGetStarted">Get Started</button>
+        </div>
+      </div>
+      <div class="heroRight">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900" alt="Resume Builder Preview">
+      </div>
+    </section>
+
+    <section class="section features">
+      <div class="featureCard">
+        <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=600" alt="Feature 1">
+        <h3>Modern Templates</h3>
+        <p>Clean designs that impress recruiters instantly.</p>
+      </div>
+      <div class="featureCard">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600" alt="Feature 2">
+        <h3>Live Preview</h3>
+        <p>Edit your resume in real-time with preview.</p>
+      </div>
+      <div class="featureCard">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Feature 3">
+        <h3>ATS Friendly</h3>
+        <p>ATS-friendly resumes for better hiring chances.</p>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <h2>Start building your resume today</h2>
+      <p>Free forever plan • No credit card required</p>
+      <button class="primaryBtn" id="ctaStart">Start Building</button>
+    </section>
+  </div>
+
+  <!-- Auth View (Sign In / Sign Up) -->
+  <div class="authPage hidden" id="authView">
+    <div class="authBox">
+      <button class="backBtn" id="authBack">&larr; Back</button>
+      <div class="brand-mark auth-logo">RS</div>
+      <h2 id="authTitle">Create account</h2>
+      
+      <form id="authForm">
+        <div class="signup-only">
+          <label>Full Name
+            <input id="authName" placeholder="Enter your name">
+          </label>
+        </div>
+        
+        <div>
+          <label>Email
+            <input id="authEmail" type="email" placeholder="name@example.com">
+          </label>
+        </div>
+        
+        <div>
+          <label>Password
+            <span class="password-wrap">
+              <input id="authPassword" type="password" placeholder="Min 6 characters">
+              <button class="eye-btn ripple" id="togglePassword" type="button" aria-label="Show password">Show</button>
+            </span>
+          </label>
+        </div>
+        
+        <button class="authBtn ripple" type="submit" id="authSubmit">Sign Up</button>
+      </form>
+      
+      <p class="auth-switch">
+        <span id="authSwitchText">Already have an account?</span>
+        <button type="button" id="authSwitchBtn" class="ripple">Login</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- Templates Selection View -->
+  <div class="templatePage hidden" id="templateView">
+    <nav class="navbar">
+      <h2>Resume Builder</h2>
+      <div class="nav-actions">
+        <button class="signinBtn" id="templateLogoutBtn">Logout</button>
+      </div>
+    </nav>
+
+    <div class="templateHeader">
+      <h1>Choose Your Resume Template</h1>
+      <p>Select a design to start building your resume</p>
+    </div>
+    <div class="templateGrid">
+      <div class="templateCard">
+        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800" alt="Classic Template">
+        <h3>Classic</h3>
+        <button class="templateSelectBtn" data-template="classic">Use This Template</button>
+      </div>
+      <div class="templateCard">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800" alt="Modern Template">
+        <h3>Modern</h3>
+        <button class="templateSelectBtn" data-template="modern">Use This Template</button>
+      </div>
+      <div class="templateCard">
+        <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=800" alt="Minimal Template">
+        <h3>Minimal</h3>
+        <button class="templateSelectBtn" data-template="minimal">Use This Template</button>
+      </div>
+      <div class="templateCard">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800" alt="Executive Template">
+        <h3>Executive</h3>
+        <button class="templateSelectBtn" data-template="executive">Use This Template</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-view hidden" id="appView">
+  <header class="topbar">
+    <div class="brand-mark">RS</div>
+    <div>
+      <h1>Resume Studio</h1>
+      <p>Fill once, preview instantly, download as PDF.</p>
+    </div>
+    <div class="top-actions">
+      <button class="ghost-btn ripple" id="sampleBtn" type="button">Sample</button>
+      <button class="ghost-btn ripple" id="backTemplatesBtn" type="button">Templates</button>
+      <button class="ghost-btn ripple" id="logoutBtn" type="button">Logout</button>
+      <button class="primary-btn ripple" id="downloadBtn" type="button">Download PDF</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="builder-panel" aria-label="Resume form">
+      <div class="builder-head">
+        <div>
+          <span class="eyebrow">Builder</span>
+          <h2>Your details</h2>
+        </div>
+        <div class="progress" aria-label="Profile completion">
+          <span id="progressValue">0%</span>
+        </div>
+      </div>
+
+      <nav class="section-tabs" aria-label="Form sections">
+        <button class="tab-btn active ripple" type="button" data-target="personal">Personal</button>
+        <button class="tab-btn ripple" type="button" data-target="education">Education</button>
+        <button class="tab-btn ripple" type="button" data-target="experience">Work</button>
+        <button class="tab-btn ripple" type="button" data-target="extras">Skills</button>
+      </nav>
+
+      <form id="resumeForm">
+        <section class="form-section active" id="personal" data-title="Personal">
+          <div class="photo-row">
+            <label class="photo-upload">
+              <input id="photo" type="file" accept="image/*">
+              <img id="photoPreview" alt="Profile preview">
+              <span id="photoText">Upload photo</span>
+            </label>
+          </div>
+          <div class="grid-two">
+            <label>Full Name<input id="name" data-field placeholder="Enter your full name"></label>
+            <label>Role / Goal<input id="role" data-field placeholder="Enter your role or career goal"></label>
+          </div>
+          <div class="grid-two">
+            <label>Email<input id="email" data-field type="email" placeholder="Enter your email address"></label>
+            <label>Phone<input id="phone" data-field placeholder="Enter your phone number"></label>
+          </div>
+          <label>Location<input id="location" data-field placeholder="Enter your city and state"></label>
+          <div class="grid-two">
+            <label>GitHub<input id="github" data-field placeholder="Enter your GitHub profile link"></label>
+            <label>LinkedIn<input id="linkedin" data-field placeholder="Enter your LinkedIn profile link"></label>
+          </div>
+          <label>Career Objective<textarea id="objective" data-field rows="4" placeholder="Write a short professional summary"></textarea></label>
+          <div class="section-nav">
+            <button class="next-btn ripple" type="button" data-next="education">Education &rarr;</button>
+          </div>
+        </section>
+
+        <section class="form-section" id="education" data-title="Education">
+          <div class="grid-two">
+            <label>Course / Degree<input id="course" data-field placeholder="Enter your course or degree"></label>
+            <label>College / University<input id="college" data-field placeholder="Enter your college or university"></label>
+          </div>
+          <div class="grid-two">
+            <label>CGPA / Percentage<input id="cgpa" data-field placeholder="Enter your CGPA or percentage"></label>
+            <label>Graduation Year<input id="gradYear" data-field placeholder="Enter graduation year"></label>
+          </div>
+          <div class="grid-two">
+            <label>12th Stream<input id="stream" data-field placeholder="Enter your stream"></label>
+            <label>12th Marks<input id="marks12" data-field placeholder="Enter your marks or percentage"></label>
+          </div>
+          <div class="grid-two">
+            <label>School Name<input id="school12" data-field placeholder="Enter your school name"></label>
+            <label>12th Pass Year<input id="passYear" data-field placeholder="Enter passing year"></label>
+          </div>
+          <div class="section-nav">
+            <button class="next-btn ripple" type="button" data-next="experience">Work &rarr;</button>
+          </div>
+        </section>
+
+        <section class="form-section" id="experience" data-title="Work">
+          <label>Projects <small>one per line</small><textarea id="projects" data-list rows="6" placeholder="Project name - Short description"></textarea></label>
+          <label>Internships / Experience <small>one per line</small><textarea id="experienceList" data-list rows="5" placeholder="Role or company - Short work description"></textarea></label>
+          <label>Achievements <small>one per line</small><textarea id="achievements" data-list rows="4" placeholder="Enter your achievement"></textarea></label>
+          <div class="section-nav">
+            <button class="next-btn ripple" type="button" data-next="extras">Skills &rarr;</button>
+          </div>
+        </section>
+
+        <section class="form-section" id="extras" data-title="Skills">
+          <label>Technical Skills <small>comma separated</small><input id="skills" data-tags placeholder="Enter skills separated by commas"></label>
+          <label>Certifications <small>comma separated</small><input id="certs" data-tags placeholder="Enter certifications separated by commas"></label>
+          <label>Languages <small>comma separated</small><input id="langs" data-tags placeholder="Enter languages separated by commas"></label>
+          <label>Strengths <small>comma separated</small><input id="strengths" data-tags placeholder="Enter strengths separated by commas"></label>
+          <label>Hobbies <small>comma separated</small><input id="hobbies" data-tags placeholder="Enter hobbies separated by commas"></label>
+        </section>
+      </form>
+      <button class="generate-btn ripple" id="generateBtn" type="button">&#10024; Generate Resume</button>
+    </section>
+
+    <section class="preview-panel" aria-label="Resume preview">
+      <div class="preview-toolbar">
+        <div>
+          <span class="eyebrow">Templates</span>
+          <h2>Choose format</h2>
+        </div>
+        <div class="template-picker" id="templatePicker">
+          <button class="template-btn active ripple" type="button" data-template="classic">Classic</button>
+          <button class="template-btn ripple" type="button" data-template="modern">Modern</button>
+          <button class="template-btn ripple" type="button" data-template="minimal">Minimal</button>
+          <button class="template-btn ripple" type="button" data-template="executive">Executive</button>
+        </div>
+      </div>
+      <div class="resume-stage">
+        <article class="resume-paper template-classic" id="resumePreview"></article>
+      </div>
+    </section>
+  </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="utils.js"></script>
+  <script src="renderer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
