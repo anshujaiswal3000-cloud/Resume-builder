@@ -15,7 +15,7 @@ const ResumeData = {
     photo: "",
     authMode: "signup",
   },
-  // Demo data: Sample button click karne par presentation ke liye form auto-fill hota hai.
+  // Demo data: Sample button.
   sample: {
     name: "Aarav Sharma",
     role: "Frontend Developer",

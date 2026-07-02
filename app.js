@@ -100,8 +100,24 @@ const ResumeApp = (() => {
     showToast("Logged out.");
   }
 
-  // 🌐 Production backend URL (Render.com deployed)
-  const API_URL = "https://resume-builder-kofl.onrender.com/api/auth";
+  // 🌐 Backend URL configuration (production Render by default, dynamic switch to localhost if running)
+  const RENDER_URL = "https://resume-builder-kofl.onrender.com/api/auth";
+  const LOCAL_URL = "http://localhost:5000/api/auth";
+  let API_URL = RENDER_URL;
+
+  // Background detection to check if local server is running
+  async function detectBackend() {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 800); // 800ms limit
+      await fetch("http://localhost:5000/", { method: "GET", signal: controller.signal });
+      clearTimeout(timeoutId);
+      API_URL = LOCAL_URL;
+      console.log("Local backend server detected on port 5000. Switching API_URL to local.");
+    } catch (err) {
+      console.log("Local backend not active. Using production Render URL:", API_URL);
+    }
+  }
 
   // Signup/Login form submit handle karta hai using backend API
   async function handleAuth(event) {
@@ -306,6 +322,7 @@ const ResumeApp = (() => {
 
   // Page load par app start karta hai, session restore karta hai and first preview render karta hai.
   function init() {
+    detectBackend();
     bindEvents();
     setAuthMode("signup");
     // Generate button initially hidden (default tab = personal, show only on Skills tab)

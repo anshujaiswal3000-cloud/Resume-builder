@@ -19,7 +19,7 @@ const ResumeUtils = (() => {
   function normalizeUrl(value) {
     const trimmed = String(value || "").trim();
     if (!trimmed) return "";
-    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    return /^https?:/i.test(trimmed) ? trimmed : `https://${trimmed}`;
   }
 
   // Comma separated values ko clean array me convert karta hai, e.g. skills badges.
