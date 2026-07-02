@@ -274,7 +274,7 @@ const ResumeApp = (() => {
     $("#downloadBtn").addEventListener("click", () => {
       renderResume();
       if (!validateRequired()) return;
-      showToast("PDF dialog open ho raha hai. Destination me Save as PDF choose karo.");
+      showToast("start downloading");
       setTimeout(() => window.print(), 250);
     });
 
